@@ -1,9 +1,5 @@
 package com.codurance;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.ArrayUtils;
-
 public class Game {
 
   private static final int START_SCORE = 0;
