@@ -12,6 +12,10 @@ public class Game {
     if (rolls[0] == 1){
       score = 20;
     }
+
+    if (rolls[0] == 5) {
+      score = 16;
+    }
   }
 
   public int score() {

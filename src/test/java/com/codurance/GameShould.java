@@ -25,4 +25,10 @@ public class GameShould {
     game.roll(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
     assertEquals(20, game.score());
   }
+
+  @Test
+  void can_score_spare_followed_by_three() {
+    game.roll(5, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    assertEquals(16, game.score());
+  }
 }
