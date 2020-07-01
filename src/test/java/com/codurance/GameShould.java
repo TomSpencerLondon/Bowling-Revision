@@ -50,7 +50,9 @@ public class GameShould {
   @CsvSource(value = {
       "--|--|--|--|--|--|--|--|--|--||, 0",
       "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||, 90",
-      "11|11|11|11|11|11|11|11|11|11||, 20"
+      "11|11|11|11|11|11|11|11|11|11||, 20",
+      "X|33|--|--|--|--|--|--|--|--||, 22",
+      "X|X|X|X|X|X|X|X|X|X|X|X||, 300"
   })
   void can_score_from_string(String input, Integer result) {
     game.play(input);
