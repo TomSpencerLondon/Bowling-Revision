@@ -1,6 +1,7 @@
 package com.codurance;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Game {
@@ -54,15 +55,14 @@ public class Game {
   }
 
   public void play(String input) {
-    String[] resultArray = Arrays.stream(input.split("|")).filter(s -> !s.equals("|")).toArray(String[]::new);
-
-    for (String s : resultArray) {
-      if (s.equals("-")) {
+    char[] chars = input.replaceAll("[\\|]", "").toCharArray();
+    for (char s : chars) {
+      if (s == '-') {
         roll(0);
-      } else if (s.equals("X")) {
+      } else if (s == 'X') {
         roll(10);
       } else {
-        roll(Integer.parseInt(s));
+        roll(Integer.parseInt(String.valueOf(s)));
       }
     }
   }

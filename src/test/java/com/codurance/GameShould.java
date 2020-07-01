@@ -48,7 +48,9 @@ public class GameShould {
 
   @ParameterizedTest
   @CsvSource(value = {
-      "--|--|--|--|--|--|--|--|--|--||, 0"
+      "--|--|--|--|--|--|--|--|--|--||, 0",
+      "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||, 90",
+      "11|11|11|11|11|11|11|11|11|11||, 20"
   })
   void can_score_from_string(String input, Integer result) {
     game.play(input);
