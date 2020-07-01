@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class GameShould {
 
@@ -16,7 +18,7 @@ public class GameShould {
 
   @Test
   void can_score_gutter_game() {
-    game.roll(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    game.roll(0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
     assertEquals(0, game.score());
   }
 
@@ -36,5 +38,20 @@ public class GameShould {
   void can_score_strike_followed_by_three_then_three() {
     game.roll(10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
     assertEquals(22, game.score());
+  }
+
+  @Test
+  void can_score_perfect_game() {
+    game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+    assertEquals(300, game.score());
+  }
+
+  @ParameterizedTest
+  @CsvSource(value = {
+      "--|--|--|--|--|--|--|--|--|--||, 0"
+  })
+  void can_score_from_string(String input, Integer result) {
+    game.play(input);
+    assertEquals(result, game.score());
   }
 }

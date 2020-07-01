@@ -1,5 +1,8 @@
 package com.codurance;
 
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
+
 public class Game {
 
   private static final int START_SCORE = 0;
@@ -16,28 +19,26 @@ public class Game {
     this.currentPosition = START_POSITION;
   }
 
-  public void roll(int...rolls) {
-    for (int toppled : rolls){
+  public void roll(int... rolls) {
+    for (int toppled : rolls) {
       roll(toppled);
     }
-
-
   }
 
-  private void roll(int toppled){
+  private void roll(int toppled) {
     rolls[roll++] = toppled;
   }
 
   public int score() {
-    for(int frame = 0; frame < 10; frame++){
-      if(isStrike(currentPosition)){
-        score += 10 + rolls[currentPosition+1] + rolls[currentPosition+2];
+    for (int frame = 0; frame < 10; frame++) {
+      if (isStrike(currentPosition)) {
+        score += 10 + rolls[currentPosition + 1] + rolls[currentPosition + 2];
         currentPosition++;
-      }else if(isSpare(currentPosition)){
-        score += 10 + rolls[currentPosition+2];
+      } else if (isSpare(currentPosition)) {
+        score += 10 + rolls[currentPosition + 2];
         currentPosition += 2;
-      }else {
-        score += rolls[currentPosition] + rolls[currentPosition+1];
+      } else {
+        score += rolls[currentPosition] + rolls[currentPosition + 1];
         currentPosition += 2;
       }
     }
@@ -45,10 +46,24 @@ public class Game {
   }
 
   private boolean isSpare(int currentPosition) {
-    return rolls[currentPosition] + rolls[currentPosition+1] == 10;
+    return rolls[currentPosition] + rolls[currentPosition + 1] == 10;
   }
 
   private boolean isStrike(int currentPosition) {
     return rolls[currentPosition] == 10;
+  }
+
+  public void play(String input) {
+    String[] resultArray = Arrays.stream(input.split("|")).filter(s -> !s.equals("|")).toArray(String[]::new);
+
+    for (String s : resultArray) {
+      if (s.equals("-")) {
+        roll(0);
+      } else if (s.equals("X")) {
+        roll(10);
+      } else {
+        roll(Integer.parseInt(s));
+      }
+    }
   }
 }
