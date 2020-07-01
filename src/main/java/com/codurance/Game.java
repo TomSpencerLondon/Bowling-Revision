@@ -50,7 +50,11 @@ public class Game {
     return rolls[currentPosition] == 10;
   }
 
-  public void play(String input) {
+  public boolean play(String input) {
+    if(input.equals("e")){
+      return false;
+    }
+
     char[] chars = input.replaceAll("[\\|]", "").toCharArray();
     for (char s : chars) {
       if (s == '-') {
@@ -61,5 +65,7 @@ public class Game {
         roll(Integer.parseInt(String.valueOf(s)));
       }
     }
+
+    return true;
   }
 }
