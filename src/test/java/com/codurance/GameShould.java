@@ -11,7 +11,7 @@ public class GameShould {
 
   @BeforeEach
   void setUp() {
-    game = new Game(0);
+    game = new Game();
   }
 
   @Test
@@ -30,5 +30,11 @@ public class GameShould {
   void can_score_spare_followed_by_three() {
     game.roll(5, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     assertEquals(16, game.score());
+  }
+
+  @Test
+  void can_score_strike_followed_by_three_then_three() {
+    game.roll(10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
+    assertEquals(22, game.score());
   }
 }
