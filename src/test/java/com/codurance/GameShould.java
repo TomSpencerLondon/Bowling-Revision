@@ -52,7 +52,8 @@ public class GameShould {
       "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||, 90",
       "11|11|11|11|11|11|11|11|11|11||, 20",
       "X|33|--|--|--|--|--|--|--|--||, 22",
-      "X|X|X|X|X|X|X|X|X|X|X|X||, 300"
+      "X|X|X|X|X|X|X|X|X|X|X|X||, 300",
+      "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5, 150"
   })
   void can_score_from_string(String input, Integer result) {
     game.play(input);
