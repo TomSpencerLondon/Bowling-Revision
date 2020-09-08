@@ -56,19 +56,17 @@ public class Game {
     }
 
     char[] chars = input.replaceAll("[\\|]", "").toCharArray();
-    int iterator = 0;
-    for (char s : chars) {
-      if (s == '-') {
+    for (int i = 0; i < chars.length; i++) {
+      if (chars[i] == '-') {
         roll(0);
-      }else if(s == '/'){
-        roll(10 - Integer.parseInt(String.valueOf(chars[iterator - 1])));
-      } else if (s == 'X') {
+      }else if(chars[i] == '/'){
+        roll(10 - Integer.parseInt(String.valueOf(chars[i - 1])));
+      } else if (chars[i] == 'X') {
         roll(10);
       } else {
-        roll(Integer.parseInt(String.valueOf(s)));
-        Integer.parseInt(String.valueOf(s));
+        roll(Integer.parseInt(String.valueOf(chars[i])));
+        Integer.parseInt(String.valueOf(chars[i]));
       }
-      iterator++;
     }
 
     return true;
